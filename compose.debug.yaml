@@ -1,0 +1,11 @@
+services:
+  onewire:
+    image: onewire
+    container_name: onewire
+    ports:
+      - 2120:2120 # FTP
+      - 2121:2121 # HTTP
+      - 4304:4304 # SERVER
+    build:
+      context: .
+      dockerfile: ./Dockerfile
