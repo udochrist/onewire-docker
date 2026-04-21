@@ -24,4 +24,11 @@ if [ $? -ne 0 ]; then
 fi
 echo -n " +owhttpd"
 
+ps aux |grep owfs  |grep -q -v grep
+if [ $? -ne 0 ]; then
+    echo " -owfs"
+    exit 1
+fi
+echo -n " +owfs"
+
 exit 0

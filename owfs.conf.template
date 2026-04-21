@@ -3,18 +3,19 @@
 
 ######################## SOURCES ########################
 server: fake = DS18S20,DS2405,DS18B20
+#server: w1
 
 #server: usb = all
 #server: device = /dev/ttyS1
 
-# all processes use the local server
-! server: server = 4304
+mountpoint = /mnt/1wire
+allow_other
 
-######################### OWFS ##########################
-# mountpoint = /mnt/1wire
-# allow_other
 
 http: port = 2121
 ftp: port = 2120
-
 server: port = 4304
+
+! server: server = 4304
+
+Celsius
