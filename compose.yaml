@@ -5,7 +5,9 @@ services:
     volumes:
       - ./config:/config
 
-
+    environment:
+      - START_OWHTTPD=true
+      - START_OWFS=
     devices:
       - /dev/fuse:/dev/fuse:rwm
 

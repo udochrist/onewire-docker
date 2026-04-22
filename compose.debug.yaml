@@ -2,6 +2,18 @@ services:
   onewire:
     image: onewire
     container_name: onewire
+    volumes:
+      - ./config:/config
+
+    environment:
+      - START_OWHTTPD=true
+      - START_OWFS=
+    devices:
+      - /dev/fuse:/dev/fuse:rwm
+
+    cap_add:
+      - SYS_ADMIN
+      
     ports:
       - 2120:2120 # FTP
       - 2121:2121 # HTTP

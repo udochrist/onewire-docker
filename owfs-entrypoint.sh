@@ -13,22 +13,31 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Start owhttpd
-echo "Starting owhttpd"
 
-/usr/bin/owhttpd -c /config/owfs.conf
-if [ $? -ne 0 ]; then
-  echo "Failed to start owhttpd"
-  exit 1
+# Start owhttpd
+if [ "${START_OWHTTPD}" = "true" ]; then
+
+  echo "Starting owhttpd"
+
+  /usr/bin/owhttpd -c /config/owfs.conf
+  if [ $? -ne 0 ]; then
+    echo "Failed"
+    exit 1
+  fi
+
 fi
 
-# Start owfs
-echo "Starting owf"
+if [ "${START_OWFS}" = "true" ]; then
 
-/usr/bin/owfs -c /config/owfs.conf
-if [ $? -ne 0 ]; then
-  echo "Failed to start owfs"
-  exit 1
+  # Start owfs
+  echo "Starting owfs"
+
+  /usr/bin/owfs -c /config/owfs.conf
+  if [ $? -ne 0 ]; then
+    echo "Failed"
+    exit 1
+  fi
+
 fi
 
 # keep running forever
