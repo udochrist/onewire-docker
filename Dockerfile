@@ -1,13 +1,13 @@
 FROM alpine
 
-RUN apk add --no-cache owfs bash
+RUN apk update && apk add --no-cache owfs bash
 RUN mkdir -p /mnt/1wire
 
 VOLUME /config
 COPY owfs.conf.template /etc/owfs.conf.template
 
-COPY --chmod=0755 owfs-entrypoint.sh /entrypoint.sh
-COPY --chmod=0755 owfs-healthcheck.sh /healthcheck.sh
+COPY /rootfs/ /
+RUN chmod +x /entrypoint.sh /healthcheck.sh
 
 
 # FTP
