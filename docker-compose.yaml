@@ -5,16 +5,16 @@ services:
       context: .
       dockerfile: ./Dockerfile
 
-    image: onewiredocker:latest
+    image: ghcr.io/udochrist/onewire-docker:latest
     container_name: onewire
     restart: unless-stopped
         
-    volumes:
-      - ./config:/config
-
     cap_add:
       - SYS_ADMIN
       
+    volumes:
+      - ./config:/config
+
     environment:
       START_OWHTTPD: "${START_OWHTTPD:-false}"
       START_OWFS: "${START_OWFS:-false}"
