@@ -1,5 +1,11 @@
 FROM alpine
 
+LABEL org.opencontainers.image.source=https://github.com/udo-home/onewire-docker
+LABEL org.opencontainers.image.description="OneWire File System (OWFS) in a Docker container for Home Assistant"
+LABEL org.opencontainers.image.title="OneWire File System (OWFS) Docker Image"
+LABEL org.opencontainers.image.licenses=MIT
+
+
 RUN apk update && apk add --no-cache owfs bash
 RUN mkdir -p /mnt/1wire
 
