@@ -1,5 +1,8 @@
 #! /bin/bash
 
+# Copy the default configuration file to the config directory if it doesn't exist
+cp /etc/owfs.conf.template /config/owfs.conf.template
+
 if [ ! -f /config/owfs.conf ]; then
   cp /etc/owfs.conf.template /config/owfs.conf
 fi
