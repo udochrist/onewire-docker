@@ -10,7 +10,6 @@ RUN apk update && apk add --no-cache owfs bash
 RUN mkdir -p /mnt/1wire
 
 VOLUME /config
-COPY owfs.conf.template /etc/owfs.conf.template
 
 COPY /rootfs/ /
 RUN chmod +x /entrypoint.sh /healthcheck.sh
