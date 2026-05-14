@@ -6,7 +6,7 @@ LABEL org.opencontainers.image.title="OneWire File System (OWFS) Docker Image"
 LABEL org.opencontainers.image.licenses=MIT
 
 
-RUN apk update && apk add --no-cache owfs bash
+RUN apk update && apk add --no-cache owfs bash fuse
 RUN mkdir -p /mnt/1wire
 
 VOLUME /config
