@@ -22,6 +22,9 @@ services:
     devices:
       - /dev/fuse:/dev/fuse:rwm
 
+    security_opt:
+      - apparmor:unconfined
+
     ports:
       - 2120:2120 # FTP
       - 2121:2121 # HTTP
