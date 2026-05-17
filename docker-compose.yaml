@@ -9,6 +9,9 @@ services:
     container_name: onewire
     restart: unless-stopped
         
+    security_opt:
+      - apparmor:unconfined
+
     cap_add:
       - SYS_ADMIN
       
@@ -16,16 +19,13 @@ services:
       - ./config:/config
 
     environment:
-      START_OWHTTPD: "${START_OWHTTPD:-false}"
+      START_OWHTTPD: "${START_OWHTTPD:-true}"
       START_OWFS: "${START_OWFS:-false}"
     
     devices:
       - /dev/fuse:/dev/fuse:rwm
-
-    security_opt:
-      - apparmor:unconfined
-
+   
     ports:
+      - 4304:4304 # SERVER
       - 2120:2120 # FTP
       - 2121:2121 # HTTP
-      - 4304:4304 # SERVER

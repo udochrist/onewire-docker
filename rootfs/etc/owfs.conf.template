@@ -2,20 +2,23 @@
 # OWFS config file
 
 ######################## SOURCES ########################
-server: fake = DS18S20,DS2405,DS18B20
-#server: w1
+#server: fake = DS18S20,DS2405,DS18B20
 
-#server: usb = all
-#server: device = /dev/ttyS1
+# owserver
+server: w1
+server: port = 0.0.0.0:4304
 
+# owfs
 mountpoint = /mnt/1wire
 allow_other
 
-
+# owhttpd
 http: port = 2121
-ftp: port = 2120
-server: port = 4304
 
+# owftp
+ftp: port = 2120
+
+# clients
 ! server: server = 4304
 
 Celsius
